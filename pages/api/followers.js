@@ -1,5 +1,5 @@
 const cheerio = require('cheerio')
-const cors = require('cors')
+const Cors = require('cors')
 
 // Initializing the cors middleware
 const cors = Cors({
