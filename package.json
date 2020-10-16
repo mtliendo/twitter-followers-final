@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
+    "cors": "^2.8.5",
     "next": "9.5.5",
     "react": "16.14.0",
     "react-dom": "16.14.0"

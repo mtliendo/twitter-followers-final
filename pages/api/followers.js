@@ -1,9 +1,28 @@
-const cheerio = require('cheerio') // 1
+const cheerio = require('cheerio')
+const cors = require('cors')
+
+// Initializing the cors middleware
+const cors = Cors({
+  methods: ['POST'],
+})
+
+// Helper method to wait for a middleware to execute before continuing
+// And to throw an error when an error happens in a middleware
+function runMiddleware(req, res, fn) {
+  return new Promise((resolve, reject) => {
+    fn(req, res, (result) => {
+      if (result instanceof Error) {
+        return reject(result)
+      }
+
+      return resolve(result)
+    })
+  })
+}
 
 export default async (req, res) => {
-  // 2
+  await runMiddleware(req, res, cors)
   if (req.method === 'POST') {
-    // 3
     const username = req.body.TWuser
 
     try {
